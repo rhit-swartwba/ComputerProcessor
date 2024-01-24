@@ -1,0 +1,21 @@
+rob val1, val2, val3:
+and val3, val3, val3
+add val1, val2, val3
+sub val2, val3, val1
+add val3, val1, val1
+
+bob val1, val2, val3:
+lui val1, val3
+addi val2, val1, val3
+
+ala val1, val2:
+lbi val1, val2
+lui val1, val2
+
+vin val1, val2, val3, val4:
+and val1, val2, val2
+or val3, val3, val4
+
+brian val1, val2:
+beq val1, val2
+jal val1, val2

@@ -1,0 +1,77 @@
+`timescale 1 ns/1 ps
+
+module ImmediateGenie_tb();
+
+//Inputs
+reg [15:0] instr;
+
+//output
+wire signed [15:0] dout;
+
+integer correctImmediate;
+integer failures = 0;
+
+//instantiate
+ImmediateGenie UUT(
+	.instr(instr),
+	.immediate(dout)
+);
+
+
+//initial begin and end
+
+	initial begin
+	
+	//Test add
+	instr = 16'b0000000100100000;
+	correctImmediate = 0;
+	 #10;
+	 if(dout != correctImmediate) begin	
+			failures = failures + 1;
+			$display("Failed Add \n Expected: %d \n Got: %d", correctImmediate, dout);
+	 end
+	 #10;
+	 
+	 
+	 //Test positive addi (3)
+	instr = 16'b0000000100110100;
+	correctImmediate = 3;
+	 #10;
+	 if(dout != correctImmediate) begin	
+			failures = failures + 1;
+			$display("Failed Positive AddI \n Expected: %d \n Got: %d", correctImmediate, dout);
+	 end
+	 #10;
+	 
+	//Test negative addi (-1)
+	instr = 16'b0010001111110100;
+	correctImmediate = -1;
+	 #10;
+	 if(dout != correctImmediate) begin	
+			failures = failures + 1;
+			$display("Failed Negative AddI \n Expected: %d \n Got: %d", correctImmediate, dout);
+	 end
+	 #10;
+	 
+	 
+	 
+	 
+	 
+	 
+	//END 
+	if(failures == 0) begin
+			$display("Passed all immediate genie tests.");
+
+	end
+	else begin
+			$display("Failed %d tests", failures);
+
+	end
+	 
+
+	
+	end
+
+
+
+endmodule

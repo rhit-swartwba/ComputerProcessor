@@ -1,0 +1,3 @@
+sub r9, r9, r5
+rob t0, t1, t2
+brian a0, LOOP

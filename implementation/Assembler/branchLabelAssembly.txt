@@ -1,0 +1,7 @@
+sub r9, r9, r5
+and t2, t2, t2
+add t0, t1, t2
+sub t1, t2, t0
+add t2, t0, t0
+beq a0, LOOP
+jal a0, LOOP
